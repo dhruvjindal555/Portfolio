@@ -22,7 +22,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav m-auto ">
-                    
+
                     <li class="nav-item active  ">
                         <a class="nav-link" aria-current="page" href="#home">Home</a>
                     </li>
@@ -41,31 +41,38 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact me</a>
                     </li>
-                    
+
                 </ul>
             </div>
         </div>
     </nav>
-   
-    <section class="heroSection d-flex justify-content-evenly position-relative   align-items-center  flex-wrap " id="home">
+
+    <section class="heroSection d-flex justify-content-evenly position-relative   align-items-center  flex-wrap "
+        id="home">
         <div>
             <div class="imgCont">
 
             </div>
         </div>
         <div class="" id="info">
-            
-                <div class="">
-                    <h2 class="hero_title">Hi,I'm Dhruv Jindal</h2>
-                    <p class="hero_desc">I'm a passionate frontend developer </p>
-                </div>
+
+            <div class="">
+                <h2 class="hero_title">Hi,I'm Dhruv Jindal</h2>
+                <p class="hero_desc">I'm a passionate frontend developer </p>
+            </div>
         </div>
     </section>
     <section class="w-100 mx-xxl-5 pt-xxl-5 " id="about">
         <div class="d-flex flex-row m-xxl-5 px-xxl-5 ">
             <div class="p-5 w-100">
                 <h2 class=" mb-5 ">About me</h2>
-                <span>Welcome to my portfolio! I am a conscientious and disciplined individual, dedicated to excellence in every endeavor. With a strong work ethic, I embody a relentless pursuit of quality and innovation. I thrive on challenges, leveraging my creativity to deliver impactful solutions. As a hardworking professional, I bring a unique blend of strategic thinking and hands-on execution to my projects. Through disciplined project management and a commitment to continuous improvement, I ensure the successful realization of goals. Explore my portfolio to witness a harmonious fusion of creativity, diligence, and a passion for delivering results that leave a lasting impression.</span>
+                <span>Welcome to my portfolio! I am a conscientious and disciplined individual, dedicated to excellence
+                    in every endeavor. With a strong work ethic, I embody a relentless pursuit of quality and
+                    innovation. I thrive on challenges, leveraging my creativity to deliver impactful solutions. As a
+                    hardworking professional, I bring a unique blend of strategic thinking and hands-on execution to my
+                    projects. Through disciplined project management and a commitment to continuous improvement, I
+                    ensure the successful realization of goals. Explore my portfolio to witness a harmonious fusion of
+                    creativity, diligence, and a passion for delivering results that leave a lasting impression.</span>
             </div>
             <div class="mt-xxl-5 p-5 w-100">
                 <h5 class="mx-2 ">What i know</h5>
@@ -222,26 +229,55 @@
         <div class="container d-flex justify-content-center">
             <div class="contact px-5 py-2 w-100">
                 <div class="row m-2">
-                    <div class="col-md-6 my-1"> <input type="text" class="form-control" placeholder="name" required/> </div>
-                    <div class="col-md-6 my-1"> <input type="number" class="form-control" placeholder="phone" required/> </div>
+                    <div class="col-md-6 my-1"> <input type="text" class="form-control" placeholder="name" id="name"
+                            required />
+                    </div>
+                    <div class="col-md-6 my-1"> <input type="number" class="form-control" id="number"
+                            placeholder="phone" required /> </div>
                 </div>
                 <div class="row m-2">
-                    <div class="col-md-12 "> <input type="email" class="form-control" placeholder="email" required/> </div>
+                    <div class="col-md-12 "> <input type="email" class="form-control" id="email" placeholder="email"
+                            required />
+                    </div>
                 </div>
                 <div class="row m-2">
                     <div class="col-md-12">
-                        <textarea rows="3" class="form-control" placeholder="project details" required></textarea>
+                        <textarea rows="3" id="message" class="form-control" placeholder="project details"
+                            required></textarea>
                     </div>
 
                 </div>
                 <div class=" m-3">
-                    <button class="btn btn-success mt-2 px-5">Send Message</button>
+                    <button id="submitBtn"class="btn btn-success mt-2 px-5">Send Message</button>
 
                 </div>
 
             </div>
         </div>
     </section>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("Qvt5aqi-MZuJ6B-vc");
+        })();
+        var params = {
+            name: document.getElementById("name").value,
+            number: document.getElementById("number").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value
+
+        }
+        var serviceID = "service_zth5ek6";
+        var templateID = "template_u9mxjde";
+        emailjs.send(serviceID, templateID, params)
+            .then(function (response) {
+                console.log('SUCCESS!', response.status, response.text);
+                document.getElementById("submitBtn").innerHTML="Submitted";
+            }, function (error) {
+                console.log('FAILED...', error);
+            });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
